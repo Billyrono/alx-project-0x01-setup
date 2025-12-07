@@ -44,7 +44,9 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(user);
+    // Ensure id is a number for UserProps
+    const userWithId = { ...user, id: user.id ?? 1 };
+    onSubmit(userWithId);
     onClose();
   };
 
